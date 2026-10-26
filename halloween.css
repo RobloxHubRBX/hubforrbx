@@ -1,0 +1,475 @@
+/* ===== RBXHub — Halloween Event (Roblox style) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Fredoka:wght@400;500;600;700&display=swap');
+
+:root {
+    --hw-bg: #0a0510;
+    --hw-bg-2: #140a1f;
+    --hw-card: #170c22;
+    --hw-card-2: #1f0f2e;
+    --hw-orange: #ff7a1a;
+    --hw-orange-2: #ffa94d;
+    --hw-orange-dark: #b84a00;
+    --hw-purple: #9b5cff;
+    --hw-purple-dark: #4c1d95;
+    --hw-slime: #9be22d;
+    --hw-slime-dark: #4d7c0f;
+    --hw-text: #e9dcf5;
+    --hw-muted: #a78bbf;
+    --hw-line: rgba(155, 92, 255, 0.22);
+}
+
+html { background: var(--hw-bg) !important; }
+
+body {
+    background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(155, 92, 255, 0.22), transparent 60%),
+        radial-gradient(900px 500px at 50% 110%, rgba(255, 122, 26, 0.18), transparent 60%),
+        var(--hw-bg) !important;
+    background-attachment: fixed !important;
+    color: var(--hw-text) !important;
+    font-family: 'Fredoka', 'Consolas', sans-serif !important;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8E%83%3C/text%3E%3C/svg%3E") 4 4, auto;
+}
+a, button, [onclick] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%91%BB%3C/text%3E%3C/svg%3E") 4 4, pointer !important;
+}
+
+body > div, body > footer { position: relative; z-index: 2; }
+
+::selection { background: var(--hw-orange); color: #1a0b00; }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--hw-bg); }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--hw-orange), var(--hw-purple));
+    border-radius: 10px;
+    border: 3px solid var(--hw-bg);
+}
+
+/* ===== Типографика ===== */
+h1, h2, h3, .text-white { color: #fff3e6 !important; }
+h2, h3 { font-family: 'Fredoka', sans-serif !important; font-weight: 700 !important; }
+.text-gray-400, .text-gray-500, .text-gray-600, .text-slate-300, .text-gray-300 { color: var(--hw-muted) !important; }
+.text-3xl, .text-4xl {
+    font-family: 'Creepster', 'Fredoka', cursive !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.06em !important;
+    color: var(--hw-orange) !important;
+    text-shadow: 0 3px 0 var(--hw-orange-dark), 0 0 22px rgba(255, 122, 26, 0.55) !important;
+}
+
+/* ===== Шапка ===== */
+.header-nav { border-bottom: 2px dashed var(--hw-line) !important; }
+
+.logo-text {
+    font-family: 'Creepster', cursive !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.06em !important;
+    font-size: 48px !important;
+    color: #fff3e6 !important;
+    text-shadow: 0 4px 0 #3b1466, 0 0 18px rgba(155, 92, 255, 0.6) !important;
+    position: relative;
+    display: inline-block;
+    animation: hw-float 3.5s ease-in-out infinite;
+}
+.logo-text span {
+    color: var(--hw-orange) !important;
+    filter: none !important;
+    text-shadow: 0 4px 0 var(--hw-orange-dark), 0 0 22px rgba(255, 122, 26, 0.75) !important;
+}
+.logo-text::before {
+    content: '🎃';
+    font-size: 0.7em;
+    margin-right: 8px;
+    display: inline-block;
+    animation: hw-wobble 2.2s ease-in-out infinite;
+}
+.logo-text::after {
+    content: '🦇';
+    position: absolute;
+    top: -14px;
+    right: -26px;
+    font-size: 0.45em;
+    animation: hw-flap 0.6s ease-in-out infinite alternate;
+}
+
+.nav-toggle {
+    background: var(--hw-card) !important;
+    border: 2px solid var(--hw-line) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 0 #07030b !important;
+}
+.nav-btn, .nav-btn-link {
+    color: var(--hw-muted) !important;
+    font-family: 'Fredoka', sans-serif !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+}
+.nav-btn.active, .nav-btn-link.active, .nav-btn:hover, .nav-btn-link:hover {
+    background: linear-gradient(180deg, var(--hw-orange-2), var(--hw-orange)) !important;
+    color: #2a1100 !important;
+    border-color: transparent !important;
+    box-shadow: 0 3px 0 var(--hw-orange-dark), 0 0 16px rgba(255, 122, 26, 0.45) !important;
+}
+
+.status-badge {
+    color: var(--hw-slime) !important;
+    background: rgba(155, 226, 45, 0.1) !important;
+    border: 2px solid rgba(155, 226, 45, 0.35) !important;
+    font-family: 'Fredoka', sans-serif !important;
+    box-shadow: 0 3px 0 rgba(77, 124, 15, 0.6) !important;
+}
+.status-dot {
+    background-color: var(--hw-slime) !important;
+    box-shadow: 0 0 10px var(--hw-slime) !important;
+    animation: hw-pulse 1.4s ease-in-out infinite;
+}
+
+/* ===== Карточки (Roblox-кнопки: толстая обводка + нижняя тень) ===== */
+.glass, .glass-card {
+    background: linear-gradient(180deg, var(--hw-card-2), var(--hw-card)) !important;
+    border: 2px solid var(--hw-line) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 6px 0 #07030b, inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    position: relative;
+    overflow: hidden;
+}
+.glass::after, .glass-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    opacity: 0.35;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23e9dcf5' stroke-width='1.5'%3E%3Cpath d='M100 0 L0 100 M100 0 L30 100 M100 0 L60 100 M100 0 L0 30 M100 0 L0 60'/%3E%3Cpath d='M80 0 Q85 15 100 20 M60 0 Q68 32 100 40 M40 0 Q52 48 100 60 M20 0 Q36 64 100 80'/%3E%3C/svg%3E") no-repeat top right / contain;
+}
+.glass:hover, .group:hover .glass, .glass-card:hover {
+    background: linear-gradient(180deg, #2a1340, #1c0d2b) !important;
+    border-color: var(--hw-orange) !important;
+    box-shadow: 0 8px 0 var(--hw-orange-dark), 0 0 30px rgba(255, 122, 26, 0.25) !important;
+}
+.card-icon, .card-thumb-wrapper {
+    border: 2px solid var(--hw-orange) !important;
+    box-shadow: 0 3px 0 var(--hw-orange-dark) !important;
+}
+.card-thumb-wrapper { background: var(--hw-bg-2) !important; }
+
+/* Бейджи */
+[class*="text-green-400"] { color: var(--hw-slime) !important; }
+[class*="bg-green-500/10"] { background: rgba(155, 226, 45, 0.1) !important; }
+[class*="border-green-500"] { border-color: rgba(155, 226, 45, 0.35) !important; }
+[class*="text-blue-400"] { color: var(--hw-orange) !important; }
+[class*="bg-blue-500/10"] { background: rgba(255, 122, 26, 0.12) !important; }
+[class*="border-blue-500"] { border-color: rgba(255, 122, 26, 0.4) !important; }
+[class*="bg-blue-400"] { background: var(--hw-orange) !important; box-shadow: 0 0 8px var(--hw-orange) !important; }
+[class*="text-yellow-400"] { color: var(--hw-purple) !important; }
+[class*="bg-yellow-500/10"] { background: rgba(155, 92, 255, 0.12) !important; }
+[class*="border-yellow-500"] { border-color: rgba(155, 92, 255, 0.4) !important; }
+.glass-card span[style*="#60a5fa"] { color: var(--hw-orange) !important; }
+.glass-card span[style*="rgba(255,255,255,0.04)"] {
+    background: rgba(155, 92, 255, 0.12) !important;
+    border-color: rgba(155, 92, 255, 0.3) !important;
+    color: #d8c3f0 !important;
+}
+
+/* ===== Кнопки ===== */
+.btn-banner, .btn-tg, .btn-load-more, .btn-copy {
+    font-family: 'Fredoka', sans-serif !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease !important;
+}
+.btn-banner, .btn-tg, .btn-load-more {
+    background: linear-gradient(180deg, var(--hw-orange-2), var(--hw-orange)) !important;
+    color: #2a1100 !important;
+    border: 2px solid #ffc488 !important;
+    box-shadow: 0 5px 0 var(--hw-orange-dark), 0 0 22px rgba(255, 122, 26, 0.35) !important;
+}
+.btn-banner:hover, .btn-tg:hover, .btn-load-more:hover {
+    background: linear-gradient(180deg, #ffbf75, var(--hw-orange-2)) !important;
+    color: #2a1100 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 7px 0 var(--hw-orange-dark), 0 0 30px rgba(255, 122, 26, 0.55) !important;
+}
+.btn-banner:active, .btn-tg:active, .btn-load-more:active, .btn-copy:active {
+    transform: translateY(4px) !important;
+    box-shadow: 0 1px 0 var(--hw-orange-dark) !important;
+}
+.btn-tg::before { content: '🎃 '; }
+.btn-copy {
+    background: rgba(155, 92, 255, 0.12) !important;
+    color: #d8c3f0 !important;
+    border: 2px solid rgba(155, 92, 255, 0.4) !important;
+    box-shadow: 0 4px 0 var(--hw-purple-dark) !important;
+}
+.btn-copy:hover {
+    background: linear-gradient(180deg, #b386ff, var(--hw-purple)) !important;
+    color: #fff !important;
+    border-color: #c9a8ff !important;
+    box-shadow: 0 4px 0 var(--hw-purple-dark), 0 0 18px rgba(155, 92, 255, 0.5) !important;
+}
+.btn-copy.copied {
+    background: linear-gradient(180deg, #b6f25a, var(--hw-slime)) !important;
+    color: #142400 !important;
+    border-color: #d4ff8f !important;
+    box-shadow: 0 4px 0 var(--hw-slime-dark) !important;
+}
+
+/* ===== Баннер ===== */
+.banner-box {
+    background:
+        radial-gradient(400px 160px at 85% 50%, rgba(255, 122, 26, 0.25), transparent 70%),
+        linear-gradient(135deg, #1d0b30 0%, #2b1146 50%, #1d0b30 100%) !important;
+    border: 2px solid var(--hw-orange) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 6px 0 var(--hw-orange-dark), 0 0 40px rgba(155, 92, 255, 0.25) !important;
+    position: relative;
+    overflow: hidden;
+}
+.banner-box::before {
+    content: '🕸️';
+    position: absolute;
+    left: -6px;
+    top: -10px;
+    font-size: 54px;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* ===== Поиск / дропдауны (scripts) ===== */
+.search-input, .dropdown-btn {
+    background: var(--hw-card) !important;
+    border: 2px solid var(--hw-line) !important;
+    font-family: 'Fredoka', sans-serif !important;
+    box-shadow: 0 4px 0 #07030b !important;
+}
+.search-input:focus, .dropdown-btn:hover {
+    border-color: var(--hw-orange) !important;
+    box-shadow: 0 4px 0 var(--hw-orange-dark), 0 0 18px rgba(255, 122, 26, 0.25) !important;
+}
+.search-icon { color: var(--hw-orange) !important; }
+.dropdown-menu {
+    background: #1a0c27 !important;
+    border: 2px solid var(--hw-line) !important;
+    font-family: 'Fredoka', sans-serif !important;
+}
+.dropdown-option:hover, .dropdown-option.active-option {
+    background: rgba(255, 122, 26, 0.16) !important;
+    color: #fff3e6 !important;
+}
+.skeleton {
+    background: var(--hw-card) !important;
+    border: 2px solid var(--hw-line) !important;
+}
+.skeleton-line { background: #2a1640 !important; }
+
+#back-to-top {
+    background: linear-gradient(180deg, var(--hw-orange-2), var(--hw-orange)) !important;
+    border: 2px solid #ffc488 !important;
+    color: #2a1100 !important;
+    box-shadow: 0 4px 0 var(--hw-orange-dark) !important;
+    border-radius: 50% !important;
+}
+
+/* ===== Прочие блоки страниц загрузки ===== */
+.bg-gray-900 {
+    background: var(--hw-card) !important;
+    border: 2px dashed var(--hw-line) !important;
+}
+.border-gray-800, [class*="border-gray-800"], .border-\[\#222\] { border-color: var(--hw-line) !important; }
+ul.list-disc { list-style: none !important; padding-left: 4px !important; }
+ul.list-disc li::before { content: '🦴 '; }
+
+footer { border-top: 2px dashed var(--hw-line) !important; }
+footer a:hover { color: var(--hw-orange) !important; }
+footer p::after { content: '  ·  🎃 Happy Halloween!'; color: var(--hw-orange); }
+
+/* ===== Декор (вставляется halloween.js) ===== */
+#hw-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+#hw-layer .hw-moon {
+    position: absolute;
+    top: 60px;
+    right: 6vw;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff7d6, #ffd98a 55%, #e9a94a);
+    box-shadow: 0 0 60px 20px rgba(255, 210, 120, 0.25), 0 0 140px 60px rgba(255, 160, 60, 0.12);
+    opacity: 0.85;
+}
+#hw-layer .hw-moon::after {
+    content: '';
+    position: absolute;
+    width: 22px; height: 22px;
+    top: 30px; left: 58px;
+    border-radius: 50%;
+    background: rgba(200, 140, 60, 0.35);
+    box-shadow: -34px 28px 0 -4px rgba(200, 140, 60, 0.3), -6px 50px 0 -8px rgba(200, 140, 60, 0.3);
+}
+#hw-layer .hw-star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    animation: hw-twinkle 3s ease-in-out infinite;
+}
+#hw-layer .hw-fog {
+    position: absolute;
+    left: -50%;
+    bottom: -40px;
+    width: 200%;
+    height: 220px;
+    background:
+        radial-gradient(closest-side, rgba(180, 150, 220, 0.16), transparent) 0 0 / 420px 220px repeat-x;
+    filter: blur(8px);
+    animation: hw-fog 40s linear infinite;
+}
+#hw-layer .hw-fog.b { bottom: -80px; opacity: 0.7; animation-duration: 60s; animation-direction: reverse; }
+#hw-layer .hw-bat {
+    position: absolute;
+    font-size: 28px;
+    left: -60px;
+    animation: hw-bat-fly linear forwards;
+    filter: drop-shadow(0 0 6px rgba(155, 92, 255, 0.6));
+}
+#hw-layer .hw-drop {
+    position: absolute;
+    top: -40px;
+    animation: hw-fall linear forwards;
+    opacity: 0.85;
+}
+#hw-layer .hw-ghost {
+    position: absolute;
+    font-size: 46px;
+    opacity: 0;
+    animation: hw-ghost 9s ease-in-out forwards;
+}
+.hw-web {
+    position: fixed;
+    width: 160px;
+    height: 160px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+}
+.hw-web.tl { top: 0; left: 0; }
+.hw-web.tr { top: 0; right: 0; transform: scaleX(-1); }
+.hw-spider {
+    position: fixed;
+    top: 0;
+    right: 4vw;
+    z-index: 3;
+    pointer-events: auto;
+    animation: hw-spider 6s ease-in-out infinite;
+    transform-origin: top center;
+    font-size: 26px;
+    cursor: pointer;
+}
+.hw-spider::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 1px;
+    height: 400px;
+    background: rgba(233, 220, 245, 0.5);
+}
+
+/* Roblox-style ивент баннер */
+#hw-event {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: -24px -24px 8px;
+    padding: 10px 16px;
+    background: linear-gradient(90deg, #3b1466, #ff7a1a, #3b1466);
+    background-size: 200% 100%;
+    animation: hw-shine 6s linear infinite;
+    color: #fff;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    border-bottom: 3px solid #1a0b00;
+}
+#hw-event b {
+    font-family: 'Creepster', cursive;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+}
+#hw-event .hw-timer {
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-variant-numeric: tabular-nums;
+}
+
+.hw-pop {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    font-size: 22px;
+    animation: hw-pop 0.9s ease-out forwards;
+}
+
+/* ===== Анимации ===== */
+@keyframes hw-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes hw-wobble { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg) scale(1.08); } }
+@keyframes hw-flap { from { transform: scaleX(1) translateY(0); } to { transform: scaleX(0.6) translateY(-4px); } }
+@keyframes hw-pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.6; } }
+@keyframes hw-twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+@keyframes hw-fog { from { transform: translateX(0); } to { transform: translateX(420px); } }
+@keyframes hw-shine { from { background-position: 0% 0; } to { background-position: 200% 0; } }
+@keyframes hw-bat-fly {
+    0% { transform: translate(0, 0) scale(var(--s, 1)); }
+    25% { transform: translate(28vw, -40px) scale(var(--s, 1)); }
+    50% { transform: translate(55vw, 30px) scale(var(--s, 1)); }
+    75% { transform: translate(85vw, -30px) scale(var(--s, 1)); }
+    100% { transform: translate(115vw, 10px) scale(var(--s, 1)); }
+}
+@keyframes hw-fall {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(var(--dx, 40px), 110vh) rotate(var(--rot, 360deg)); }
+}
+@keyframes hw-ghost {
+    0% { opacity: 0; transform: translateY(20px) scale(0.8); }
+    20% { opacity: 0.7; }
+    50% { transform: translate(40px, -30px) scale(1); }
+    80% { opacity: 0.6; }
+    100% { opacity: 0; transform: translate(80px, -60px) scale(1.1); }
+}
+@keyframes hw-spider { 0%, 100% { transform: translateY(220px); } 50% { transform: translateY(340px); } }
+@keyframes hw-pop {
+    0% { transform: translate(-50%, -50%) scale(0.4); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.1) rotate(var(--rot)); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .logo-text { font-size: 38px !important; }
+    #hw-layer .hw-moon { width: 70px; height: 70px; top: 90px; }
+    .hw-web { width: 100px; height: 100px; }
+    .hw-spider { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+    #hw-layer .hw-bat, #hw-layer .hw-drop, #hw-layer .hw-ghost { display: none; }
+}
